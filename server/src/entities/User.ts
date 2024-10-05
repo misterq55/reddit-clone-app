@@ -14,7 +14,7 @@ export class User {
     @Index()
     @Length(3, 32, {message: "사용자 이름은 3자 이상이어야 합니다."})
     @Column()
-    username: string
+    username: string 
 
     @Column()
     @Length(6, 255, {message:" 비밀번호는 6자리 이상이어야 합니다."})
@@ -30,5 +30,3 @@ export class User {
     async hashPassword() {
         this.password = await bcrypt.hash(this.password, 6) 
     }
-
-}
