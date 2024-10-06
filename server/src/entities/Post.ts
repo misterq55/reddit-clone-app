@@ -1,9 +1,13 @@
-import { BeforeInsert, Column, Index, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import { BeforeInsert, Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import BaseEntity from './Entity';
 import { User } from "./User"
 import { Exclude, Expose } from 'class-transformer';
 import { makeId, slugify } from '../utils/helpers';
+import Sub from './Sub';
+import Vote from './Vote';
+import Comment from './Comment';
 
+@Entity("posts")
 export default class Post extends BaseEntity {
     @Index()
     @Column()
@@ -38,7 +42,7 @@ export default class Post extends BaseEntity {
     comments: Comment[];
 
     @Exclude()
-    @OneToMany(() => ValidationTypes, (vote) => vote.post)
+    @OneToMany(() => Vote, (vote) => vote.post)
     votes: Vote[];
 
     @Expose() get url(): string {
