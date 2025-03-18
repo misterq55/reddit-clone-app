@@ -3,7 +3,8 @@ import { User } from "../entities/User"
 import { isEmpty, validate } from "class-validator";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
-import cookie from "cookie"
+import * as cookie from "cookie";
+
 
 const mapError = (errors: Object[]) => {
     return errors.reduce((prev: any, err: any) => {
