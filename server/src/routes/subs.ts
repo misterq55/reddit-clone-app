@@ -21,7 +21,7 @@ const getSub = async (req: Request, res: Response) => {
         // 포스트를 생성한 후에 해당 sub에 속하는 포스트 정보들을 넣어주기
         const posts = await Post.find({
             where: { subName: sub.name},
-            order: { createAt: "DESC"},
+            order: { createdAt: "DESC"},
             relations: ["comments", "votes"]
         })
 
